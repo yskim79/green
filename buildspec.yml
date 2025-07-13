@@ -11,3 +11,8 @@ phases:
   post_build:
     commands:
       - docker push 297760130419.dkr.ecr.ap-northeast-2.amazonaws.com/green:1.0.1
+      - printf '[{"name":"green","imageUri":"%s"}]' $IMAGE_URI > imagedefinitions.json
+      - cat imagedefinitions.json
+artifacts:
+  files:
+    - imagedefinitions.json
